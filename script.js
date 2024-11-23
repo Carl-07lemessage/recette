@@ -59,7 +59,7 @@ function displayRecipes(recipesToDisplay = recipes) {
             >
             <h3>🍳 ${recipe.name}</h3>
             <button onclick="showRecipeDetails(${recipe.id})" class="recipe-button">
-                Voir la recette complète ➔
+                Voir la recette
             </button>
         `;
         grid.appendChild(card);
@@ -143,17 +143,37 @@ function showRecipeDetails(id) {
     
     // Attendre que le défilement soit terminé avant d'afficher les détails
     setTimeout(() => {
-        alert(`
-            ${recipe.name}
-            
-            Ingrédients:
-            ${recipe.ingredients}
-            
-            Instructions:
-            ${recipe.instructions}
-        `);
+        // Sélectionner la section pour afficher les détails de la recette
+        const recipeDetails = document.getElementById("recipeDetails");
+        
+        // Mettre à jour le contenu avec les détails de la recette
+        document.getElementById("recipeName").innerText = recipe.name;
+        document.getElementById("recipeImage").src = recipe.image || "https://images.unsplash.com/photo-1495521821757-a1efb6729352?auto=format&fit=crop&w=600&h=400"; // Vous pouvez définir une image par défaut ici
+        document.getElementById("recipePrepTime").innerText = `Temps de préparation: ${recipe.prepTime || 'N/A'}`;
+
+        // Mettre à jour les ingrédients
+        const ingredientsList = document.getElementById("recipeIngredients");
+        ingredientsList.innerHTML = ''; // Effacer les anciens ingrédients
+        recipe.ingredients.forEach(ingredient => {
+            const li = document.createElement('li');
+            li.innerText = ingredient;
+            ingredientsList.appendChild(li);
+        });
+
+        // Mettre à jour les instructions
+        const instructionsList = document.getElementById("recipeInstructions");
+        instructionsList.innerHTML = ''; // Effacer les anciennes instructions
+        recipe.instructions.forEach(instruction => {
+            const li = document.createElement('li');
+            li.innerText = instruction;
+            instructionsList.appendChild(li);
+        });
+
+        // Afficher la section avec les détails
+        recipeDetails.style.display = 'block';
     }, 500);
 }
+
 
 function toggleMenu() {
     const sidebar = document.querySelector('.sidebar');
@@ -327,3 +347,5 @@ window.onclick = function(event) {
         closeSignupModal();
     }
 }
+
+

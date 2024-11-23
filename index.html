@@ -54,6 +54,19 @@
     
             <div id="addRecipeForm" class="add-recipe-form" style="display: none;">
                 <h2>✨ Nouvelle Recette</h2>
+
+        <div class="container">
+            <div class="header">
+                <h1>Carnet de Recettes</h1>
+            </div>
+        
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Recherchez une recette par nom ou ingrédient...">
+                <button onclick="searchRecipes()">Rechercher</button>
+            </div>
+        
+            <div class="add-recipe-form">
+                <h2>Nouvelle Recette</h2>
                 <div class="form-group">
                     <label for="recipeName">Nom de la recette</label>
                     <input type="text" id="recipeName" placeholder="Ex: Tarte aux pommes" required>
@@ -119,5 +132,98 @@
         </div>
     </div>
     <script src="./script.js"></script>
+        
+            <div id="recipesGrid" class="recipes-grid">
+                <!-- Les recettes seront ajoutées ici dynamiquement -->
+            </div>
+        </div>
+        
+        <script>
+        let recipes = [];
+        
+        function addRecipe() {
+            const name = document.getElementById('recipeName').value;
+            const ingredients = document.getElementById('ingredients').value;
+            const instructions = document.getElementById('instructions').value;
+            const prepTime = document.getElementById('prepTime').value;
+        
+            if (!name || !ingredients || !instructions || !prepTime) {
+                alert('Veuillez remplir tous les champs');
+                return;
+            }
+        
+            const recipe = {
+                id: Date.now(),
+                name,
+                ingredients,
+                instructions,
+                prepTime,
+                date: new Date().toLocaleDateString()
+            };
+        
+            recipes.push(recipe);
+            saveRecipes();
+            displayRecipes();
+            clearForm();
+        }
+        
+        function clearForm() {
+            document.getElementById('recipeName').value = '';
+            document.getElementById('ingredients').value = '';
+            document.getElementById('instructions').value = '';
+            document.getElementById('prepTime').value = '';
+        }
+        
+        function searchRecipes() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filteredRecipes = recipes.filter(recipe => 
+                recipe.name.toLowerCase().includes(searchTerm) ||
+                recipe.ingredients.toLowerCase().includes(searchTerm)
+            );
+            displayRecipes(filteredRecipes);
+        }
+        
+        function displayRecipes(recipesToDisplay = recipes) {
+            const grid = document.getElementById('recipesGrid');
+            grid.innerHTML = '';
+        
+            recipesToDisplay.forEach((recipe, index) => {
+                const card = document.createElement('div');
+                card.className = 'recipe-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.innerHTML = `
+                    <h3>🍳 ${recipe.name}</h3>
+                    <span class="tag">⏱️ ${recipe.prepTime} min</span>
+                    <span class="tag">📅 ${recipe.date}</span>
+                    <p><strong>Ingrédients:</strong><br>${recipe.ingredients}</p>
+                    <p><strong>Instructions:</strong><br>${recipe.instructions}</p>
+                    <button onclick="deleteRecipe(${recipe.id})">Supprimer la recette</button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+        
+        function deleteRecipe(id) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer cette recette ?')) {
+                recipes = recipes.filter(recipe => recipe.id !== id);
+                saveRecipes();
+                displayRecipes();
+            }
+        }
+        
+        function saveRecipes() {
+            localStorage.setItem('recipes', JSON.stringify(recipes));
+        }
+        
+        function loadRecipes() {
+            const savedRecipes = localStorage.getItem('recipes');
+            if (savedRecipes) {
+                recipes = JSON.parse(savedRecipes);
+                displayRecipes();
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', loadRecipes);
+        </script>
 </body>
 </html>

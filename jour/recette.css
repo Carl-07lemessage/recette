@@ -1,0 +1,78 @@
+main {
+  background-color: rgb(206, 221, 221);
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+.container1{
+    width: 25%;
+    background-color: rgb(255, 255, 255);
+    
+}
+.cont{
+    background-color: rgb(13, 138, 200, 1);
+    display: block;
+    justify-content: center;
+    display: flex;           
+    flex-direction: column;   
+    align-items: center;    
+    gap: 10px;               
+    padding: 10px;
+    height: 80%;
+    width: 80%;
+    border-radius:3%;
+    margin-top: 6%;
+    margin-left: 21px;
+}
+.container1 button {
+    padding: 10px 20px;      
+    font-size: 16px;         
+    cursor: pointer;         
+    border: 1px solid #ddd; 
+    border-radius: 5px;      
+}
+
+.container2{
+    width: 75%;
+    margin-top: 1%;
+    
+    
+}
+.cont0{
+    display: flex;
+    justify-content: space-between;
+    height: 6%;
+}
+.cont2{
+   
+}
+.recherche{
+    height: 80%;      
+    width: 200%;      
+    background-color: rgb(237, 237, 237);
+    border-radius: 10px; 
+    margin: 10px auto;
+}
+.button {
+    display: flex;           
+    justify-content: center; 
+    gap: 15px;               
+    margin-top: 20px;        
+}
+
+.button button {
+    padding: 10px 20px;      
+    font-size: 16px;         
+    background-color: #007BFF; 
+    color: #fff;             
+    border: none;            
+    border-radius: 5px;      
+    cursor: pointer;         
+    transition: background-color 0.3s ease; 
+}
+
+.button button:hover {
+    background-color: #0056b3; 
+}

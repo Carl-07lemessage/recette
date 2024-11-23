@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./recette.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="container1">
+                <div class="cont">
+                <button>Accueil</button>
+                   <button>Nouvelle recette</button>
+                   <button>Mes recettes</button>
+                </div>
+            </div>
+            <div class="container2">
+             <div class="cont0">
+                <div class="cont2">
+                    <input type="text" placeholder="Rechercher..." class="recherche">
+                    <button class="search-button">🔍</button>
+                  </div>
+                  <div class="button">
+                    <button>Connexion</button>
+                    <button>Inscription</button>
+                 </div>
+                </div>
+                <div>
+                    <h1>Détail de la recette</h1>
+                </div>
+                <div id="recipeDetails" style="display:none;">
+                    <div>
+                        <h2 id="recipeName"></h2>
+                        <img id="recipeImage" width="300" />
+                    </div>
+                    <div>
+                        <p id="recipePrepTime"></p>
+                        <ul id="recipeIngredients"></ul>
+                    </div>
+                    <div>
+                        <h3>Préparation</h3>
+                        <ol id="recipeInstructions"></ol>
+                    </div>
+                </div>
+                
+  
+            </div>
+        </div>
+    </main>
+    <script src="../script.js">
+
+
+const recipes = [
+    {
+        id: 1,
+        name: "Poulet aux oignons",
+        image: "/asset/343efa85960de6f4af3a690a931957e6 1.png",
+        prepTime: "30 min",
+        ingredients: [
+            "1 kg de poulet",
+            "2 oignons",
+            "1/2 litre de sauce tomate",
+            "2 cuillères à soupe de curry",
+            "1/4 litre de lait",
+            "1/2 litre de beurre",
+            "1/2 litre de coulis de tomates"
+        ],
+        instructions: [
+            "Découpez les oignons et les éminces.",
+            "Dans une poêle, faites bouillir le lait et le beurre.",
+            "Ajoutez les oignons et la sauce tomate et mélangez.",
+            "Ajoutez le curry et mélangez.",
+            "Ajoutez le poulet et mélangez.",
+            "Ajoutez le coulis de tomates et mélangez."
+        ]
+    }
+];
+
+    </script>
+</body>
+</html>
