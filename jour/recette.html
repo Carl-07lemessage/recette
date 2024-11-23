@@ -170,6 +170,21 @@
     cursor: pointer;
     transition: all 0.3s ease;
 }
+.modif {
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    background-color: #eeeeee; 
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px; 
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.modif:hover {
+    background-color:  rgb(13, 138, 200, 1);
+    color: #ffffff;
+}
 
         @media (max-width: 768px) {
             .container1 {
@@ -253,12 +268,13 @@
 <body>
     <main>
         <div class="container">
-            <!-- Bouton Burger -->
+            
             <button class="burger-menu" id="burgerMenu">☰</button>
 
-            <!-- Menu latéral -->
+           
             <div class="container1" id="menuContent">
                 <div class="cont">
+                   
                     <button>Accueil</button>
                     <button>Nouvelle recette</button>
                     <button>Mes recettes</button>
@@ -278,7 +294,7 @@
                         >
                     </div>
                     <div class="auth-buttons">
-                        <button class="auth-button login-btn" onclick="showLoginModal()">
+                        <button class="auth-button login-btn" onclick="showLoginModal() ">
                             Connexion
                         </button>
                         <button class="auth-button signup-btn" onclick="showSignupModal()">
@@ -292,7 +308,11 @@
                 <div>
                     <div class="img">
                         <img src="/recette/asset/343efa85960de6f4af3a690a931957e6 1.png" alt="Un chat mignon" width="300" class="img1">
-                        <h2>Poulet aux <br>oignons</h2>
+                        <div>
+                            <h2>Poulet aux <br>oignons</h2>
+                            <a href="" class="modif" onclick="editItem()">Modifier</a>
+                            <a href="" class="modif" onclick="deleteItem()">Supprimer</a>
+                        </div>
                     </div>
                     <div class="text">
                         <p>Ingredients</p>
@@ -349,6 +369,15 @@ const recipes = [
         ]
     }
 ];
+
+
+    function editItem() {
+        alert('Edit action triggered');
+    }
+    function deleteItem() {
+        alert('Delete action triggered');
+    }
+
 
     </script>
 </body>
