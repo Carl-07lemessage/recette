@@ -92,15 +92,67 @@ body {
     <h1>INSCRIVEZ-VOUS</h1>
     <div class="content">
       <img src="/recette/asset/L'Afrodisiac restaurant _ Cuisine africaine à Paris - Timodelle Magazine (1).jpg" alt="Chef tenant un plat" class="image">
-      <form>
-        <input type="text" name="nom" placeholder="Nom" required>
-        <input type="email" name="email" placeholder="e-mail" required>
-        <input type="password" name="password" placeholder="Mots de passe" required>
-        <input type="tel" name="telephone" placeholder="Numero de téléphone" required>
-        <button type="submit">Soumettre</button>
+      <form id="signupForm">
+        <input type="text" id="name" name="nom" placeholder="Nom" required>
+        <input type="email" id="email" name="email" placeholder="e-mail" required>
+        <input type="password" id="password" name="password" placeholder="Mots de passe" required>
+        <input type="tel" id="telephone" name="telephone" placeholder="Numero de téléphone" required>
+        <button type="submit" id="submit">Soumettre</button>
       </form>
     </div>
   </div>
+ 
+    <script>
+  document.getElementById('signupForm').addEventListener('submit', async function (event) {
+      event.preventDefault(); // Empêche le rechargement de la page
+      
+      // Récupération des valeurs des champs
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const telephone = document.getElementById('telephone').value;
+
+      // Désactiver le bouton de soumission pour éviter des clics multiples
+      const submitButton = document.getElementById('submit');
+      submitButton.disabled = true;
+
+      try {
+          // Envoi de la requête POST à l'API
+          const response = await fetch('https://cuisine-recipes-onrender.com/api/register', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  name,
+                  email,
+                  password,
+                  telephone
+              }),
+          });
+
+          // Vérification de la réponse du serveur
+          if (!response.ok) {
+              const errorData = await response.json();
+              throw new Error(errorData.message || 'Une erreur est survenue lors de l\'inscription.');
+          }
+
+          const data = await response.json();
+          alert('Inscription réussie ! Bienvenue, ' + data.name);
+
+          // Réinitialisation du formulaire après succès
+          document.getElementById('signupForm').reset();
+      } catch (error) {
+          console.error('Erreur:', error);
+          alert('Erreur : ' + error.message);
+      } finally {
+          // Réactiver le bouton après la soumission
+          submitButton.disabled = false;
+      }
+  });
+</script>
+
+  
 
 
 </body>

@@ -1,6 +1,5 @@
 let recipes = [];
 
-// Ajouter des recettes d'exemple si aucune recette n'existe
 function addExampleRecipes() {
     if (recipes.length === 0) {
         const exampleRecipes = [
@@ -66,7 +65,7 @@ function displayRecipes(recipesToDisplay = recipes) {
     });
 }
 
-// Ajoute une fonction pour animer les éléments lorsqu'ils entrent dans la fenêtre d'affichage
+
 function addIntersectionObserver() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -130,46 +129,45 @@ function searchRecipes() {
     displayRecipes(filteredRecipes);
 }
 
-// Ajoute un comportement de défilement doux pour les détails de la recette
 function showRecipeDetails(id) {
     const recipe = recipes.find(r => r.id === id);
     if (!recipe) return;
 
-    // Défilement en douceur vers le haut avant d'afficher les détails
+    
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
     });
     
-    // Attendre que le défilement soit terminé avant d'afficher les détails
+    
     setTimeout(() => {
-        // Sélectionner la section pour afficher les détails de la recette
+        
         const recipeDetails = document.getElementById("recipeDetails");
         
-        // Mettre à jour le contenu avec les détails de la recette
+        
         document.getElementById("recipeName").innerText = recipe.name;
         document.getElementById("recipeImage").src = recipe.image || "https://images.unsplash.com/photo-1495521821757-a1efb6729352?auto=format&fit=crop&w=600&h=400"; // Vous pouvez définir une image par défaut ici
         document.getElementById("recipePrepTime").innerText = `Temps de préparation: ${recipe.prepTime || 'N/A'}`;
 
-        // Mettre à jour les ingrédients
+        
         const ingredientsList = document.getElementById("recipeIngredients");
-        ingredientsList.innerHTML = ''; // Effacer les anciens ingrédients
+        ingredientsList.innerHTML = ''; 
         recipe.ingredients.forEach(ingredient => {
             const li = document.createElement('li');
             li.innerText = ingredient;
             ingredientsList.appendChild(li);
         });
 
-        // Mettre à jour les instructions
+        
         const instructionsList = document.getElementById("recipeInstructions");
-        instructionsList.innerHTML = ''; // Effacer les anciennes instructions
+        instructionsList.innerHTML = ''; 
         recipe.instructions.forEach(instruction => {
             const li = document.createElement('li');
             li.innerText = instruction;
             instructionsList.appendChild(li);
         });
 
-        // Afficher la section avec les détails
+        
         recipeDetails.style.display = 'block';
     }, 500);
 }
@@ -198,7 +196,7 @@ function toggleMenu() {
             `;
             document.body.appendChild(backdrop);
             backdrop.addEventListener('click', toggleMenu);
-            // Retarder pour permettre la transition
+            
             setTimeout(() => backdrop.style.opacity = '1', 10);
         }
     } else if (backdrop) {
@@ -208,16 +206,15 @@ function toggleMenu() {
 }
 
 function showFavorites() {
-    // Fonctionnalité des favoris à venir
+    
     alert('Fonctionnalité des favoris à venir!');
 }
 
 function showCategories() {
-    // Fonctionnalité des catégories à venir
+    
     alert('Fonctionnalité des catégories à venir!');
 }
 
-// Mise à jour de la fonction showAddRecipeForm
 function showAddRecipeForm() {
     document.getElementById('addRecipeForm').style.display = 'block';
     document.querySelector('.featured-recipes').style.display = 'none';
@@ -226,7 +223,7 @@ function showAddRecipeForm() {
     }
 }
 
-// Mise à jour de la fonction showAllRecipes
+
 function showAllRecipes() {
     document.getElementById('addRecipeForm').style.display = 'none';
     document.querySelector('.featured-recipes').style.display = 'block';
@@ -253,7 +250,7 @@ function loadRecipes() {
     if (savedRecipes) {
         recipes = JSON.parse(savedRecipes);
     }
-    addExampleRecipes(); // Ajouter des recettes d'exemple si aucune n'existe
+    addExampleRecipes(); 
     displayRecipes();
 }
 
@@ -261,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadRecipes();
     addIntersectionObserver();
     
-    // Ajoute la visibilité du bouton de bascule du menu sur mobile
+    
     const menuToggle = document.querySelector('.menu-toggle');
     function updateMenuToggleVisibility() {
         menuToggle.style.display = window.innerWidth <= 768 ? 'block' : 'none';
@@ -271,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateMenuToggleVisibility();
 });
 
-// Mise à jour des fonctions de modale
+
 function showLoginModal() {
     const modal = document.getElementById('loginModal');
     modal.style.display = 'block';
@@ -309,10 +306,10 @@ function handleLogin(event) {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
     
-    // Ajouter la logique de connexion ici
+    
     console.log('Tentative de connexion:', { email, password });
     
-    // Fermer la modale
+    
     closeLoginModal();
 }
 
@@ -328,14 +325,14 @@ function handleSignup(event) {
         return;
     }
     
-    // Ajouter la logique d'inscription ici
+    
     console.log('Tentative d\'inscription:', { name, email, password });
     
-    // Fermer la modale
+    
     closeSignupModal();
 }
 
-// Ajouter des gestionnaires de clic pour fermer les modales lorsqu'on clique en dehors
+
 window.onclick = function(event) {
     const loginModal = document.getElementById('loginModal');
     const signupModal = document.getElementById('signupModal');

@@ -3,9 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Formulaire de Modification</title>
+    <style>
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90%;
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        
+        .add-recipe-form {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #007bff;
+            outline: none;
+            background-color: #fff;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        
+        @media (max-width: 768px) {
+            .add-recipe-form {
+                padding: 20px;
+            }
+
+            button {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Creation du formulaire -->
+
+
+    <div class="add-recipe-form">
+        
+        <div class="form-group">
+            <label for="recipeName">Nom de la recette</label>
+            <input type="text" id="recipeName" placeholder="Ex: Tarte aux pommes" required>
+        </div>
+        <div class="form-group">
+            <label for="ingredients">Ingrédients</label>
+            <textarea id="ingredients" rows="4" placeholder="Un ingrédient par ligne" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="instructions">Instructions</label>
+            <textarea id="instructions" rows="6" placeholder="Détaillez les étapes de préparation" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="prepTime">Temps de préparation (minutes)</label>
+            <input type="number" id="prepTime" placeholder="Ex: 30" required>
+        </div>
+        <button onclick="addRecipe()">Ajouter la recette ✨</button>
+    </div>
+
+    <script>
+        function addRecipe() {
+            
+            alert('Recette ajoutée!');
+        }
+    </script>
+
 </body>
 </html>

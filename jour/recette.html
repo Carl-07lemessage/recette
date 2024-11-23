@@ -253,14 +253,42 @@
        
         width: 100%;
     } */
-    .recherche {
+    .search-input {
         font-size: 14px; 
         width: 80%;       
         padding: 2px;  
         margin-right: 20px;         
     }
+    .auth-buttons {
+        font-size: 2px;
+    }
 
     
+}
+@media (max-width: 480px) {
+    .top-bar {
+        flex-direction: column; 
+        align-items: stretch;
+    }
+
+    .search-container {
+        margin: 0 0 10px 0; 
+        height: 70px;
+        color: #000;
+    }
+
+    .auth-buttons {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .auth-buttons a {
+        flex: 1; 
+        margin: 0 5px; 
+        padding: 8px 10px; 
+        font-size: 12px; 
+        text-align: center;
+    }
 }
         
     </style>
@@ -280,7 +308,6 @@
                     <button>Mes recettes</button>
                 </div>
             </div>
-
             
             <div class="container2">
                 <div class="top-bar">
@@ -294,12 +321,10 @@
                         >
                     </div>
                     <div class="auth-buttons">
-                        <button class="auth-button login-btn" onclick="showLoginModal() ">
-                            Connexion
-                        </button>
-                        <button class="auth-button signup-btn" onclick="showSignupModal()">
-                            Inscription
-                        </button>
+                        <a href="/recette/jour/connexion.html" class="modif" onclick="editItem()">Connexion</a>
+                        <a href="/recette/jour/inscription.html" class="modif" onclick="deleteItem()">Inscription</a>
+                        
+                       
                     </div>
                 </div>
                 <div>
@@ -310,7 +335,7 @@
                         <img src="/recette/asset/343efa85960de6f4af3a690a931957e6 1.png" alt="Un chat mignon" width="300" class="img1">
                         <div>
                             <h2>Poulet aux <br>oignons</h2>
-                            <a href="" class="modif" onclick="editItem()">Modifier</a>
+                            <a href="/recette/jour/formulaire.html" class="modif" onclick="editItem()">Modifier</a>
                             <a href="" class="modif" onclick="deleteItem()">Supprimer</a>
                         </div>
                     </div>
