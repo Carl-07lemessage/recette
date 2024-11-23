@@ -1,25 +1,66 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recette</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-        <div class="container">
-            <div class="header">
-                <h1>Carnet de Recettes</h1>
-            </div>
+    <div class="dashboard-container">
+        <button class="menu-toggle" onclick="toggleMenu()" style="display: none;">☰</button>
         
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Recherchez une recette par nom ou ingrédient...">
-                <button onclick="searchRecipes()">Rechercher</button>
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1>🏠 Carnet de Recettes</h1>
             </div>
+            <div class="nav-links">
+                <a class="nav-link" onclick="showAllRecipes()">
+                    Toutes les recettes
+                </a>
+                <a class="nav-link" onclick="showAddRecipeForm()">
+                    Nouvelle recette
+                </a>
+            </div>
+        </nav>
+    
+        <main class="main-content">
+            <div class="top-bar">
+                <div class="search-container">
+                    <input 
+                        type="text" 
+                        class="search-input" 
+                        placeholder="Rechercher une recette..." 
+                        id="searchInput"
+                        onkeyup="searchRecipes()"
+                    >
+                </div>
+                <div class="auth-buttons">
+                    <button class="auth-button login-btn" onclick="showLoginModal()">
+                        Connexion
+                    </button>
+                    <button class="auth-button signup-btn" onclick="showSignupModal()">
+                        Inscription
+                    </button>
+                </div>
+            </div>
+    
+            <div class="featured-recipes">
+                <h2> Recettes en vedette</h2>
+                <div id="recipesGrid" class="recipes-grid">
+                    <!-- Recipes will be generated here -->
+                </div>
+            </div>
+    
+            <div id="addRecipeForm" class="add-recipe-form" style="display: none;">
+                <h2>✨ Nouvelle Recette</h2>
+
+        <div class="container">
+            
+        
         
             <div class="add-recipe-form">
-                <h2>Nouvelle Recette</h2>
+               
                 <div class="form-group">
                     <label for="recipeName">Nom de la recette</label>
                     <input type="text" id="recipeName" placeholder="Ex: Tarte aux pommes" required>
@@ -38,6 +79,53 @@
                 </div>
                 <button onclick="addRecipe()">Ajouter la recette ✨</button>
             </div>
+        </main>
+    </div>
+    
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeLoginModal()">&times;</span>
+            <h2>Connexion</h2>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Mot de passe</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="modal-button">Se connecter</button>
+            </form>
+        </div>
+    </div>
+    
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeSignupModal()">&times;</span>
+            <h2>Inscription</h2>
+            <form id="signupForm" onsubmit="handleSignup(event)">
+                <div class="form-group">
+                    <label for="signupName">Nom complet</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Mot de passe</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirmer le mot de passe</label>
+                    <input type="password" id="signupConfirmPassword" required>
+                </div>
+                <button type="submit" class="modal-button">S'inscrire</button>
+            </form>
+        </div>
+    </div>
+    <script src="./script.js"></script>
         
             <div id="recipesGrid" class="recipes-grid">
                 <!-- Les recettes seront ajoutées ici dynamiquement -->

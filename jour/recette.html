@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -125,6 +125,51 @@
             font-size: 150%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 30px;
+    background: #FFFFFF;
+    border-radius: 15px;
+    border: 1px solid var(--primary-color);
+}
+
+.search-container {
+    flex: 1;
+    margin: 0 20px;
+    max-width: 600px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: 25px;
+    border: 2px solid var(--primary-color);
+    background: #FFFFFF;
+    color: #333333;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.auth-button {
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
         @media (max-width: 768px) {
             .container1 {
@@ -156,18 +201,7 @@
             
         }
          
-        
-        /* @media (max-width: 768px) {
-    .cont0 {
-        flex-direction: column;   
-        align-items: stretch;     
-        gap: 15px;                
-    }
-
-    .button {
-        justify-content: center;  
-    }
-} */
+      
 
 
 @media (max-width:640px) {
@@ -211,10 +245,7 @@
         margin-right: 20px;         
     }
 
-    .button button {
-        font-size: 10px;          
-        padding: 5px 5px;        
-    }
+    
 }
         
     </style>
@@ -236,13 +267,23 @@
 
             
             <div class="container2">
-                <div class="cont0">
-                    <div class="cont2">
-                        <input type="text" placeholder="Rechercher..." class="recherche">
+                <div class="top-bar">
+                    <div class="search-container">
+                        <input 
+                            type="text" 
+                            class="search-input" 
+                            placeholder="Rechercher une recette..." 
+                            id="searchInput"
+                            onkeyup="searchRecipes()"
+                        >
                     </div>
-                    <div class="button">
-                        <button>Connexion</button>
-                        <button>Inscription</button>
+                    <div class="auth-buttons">
+                        <button class="auth-button login-btn" onclick="showLoginModal()">
+                            Connexion
+                        </button>
+                        <button class="auth-button signup-btn" onclick="showSignupModal()">
+                            Inscription
+                        </button>
                     </div>
                 </div>
                 <div>
@@ -280,14 +321,35 @@
             </div>
         </div>
     </main>
-    <script>
-        const burgerMenu = document.getElementById('burgerMenu');
-        const menuContent = document.getElementById('menuContent');
+    <script src="../script.js">
 
-        // Toggle afficher/masquer le menu
-        burgerMenu.addEventListener('click', () => {
-            menuContent.classList.toggle('show');
-        });
+
+const recipes = [
+    {
+        id: 1,
+        name: "Poulet aux oignons",
+        image: "/asset/343efa85960de6f4af3a690a931957e6 1.png",
+        prepTime: "30 min",
+        ingredients: [
+            "1 kg de poulet",
+            "2 oignons",
+            "1/2 litre de sauce tomate",
+            "2 cuillères à soupe de curry",
+            "1/4 litre de lait",
+            "1/2 litre de beurre",
+            "1/2 litre de coulis de tomates"
+        ],
+        instructions: [
+            "Découpez les oignons et les éminces.",
+            "Dans une poêle, faites bouillir le lait et le beurre.",
+            "Ajoutez les oignons et la sauce tomate et mélangez.",
+            "Ajoutez le curry et mélangez.",
+            "Ajoutez le poulet et mélangez.",
+            "Ajoutez le coulis de tomates et mélangez."
+        ]
+    }
+];
+
     </script>
 </body>
 </html>
