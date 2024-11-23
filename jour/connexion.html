@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      
+body {
+    font-family: Arial, sans-serif;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+   
+  }
+  
+  .container {
+    text-align: center;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    height: 80%;
+  }
+  
+  h1 {
+    color: rgb(13, 138, 200, 1);
+    font-size: 24px;
+  }
+  
+  .content {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .image {
+    width: 30%;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    margin-left: 10%;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 45%;
+   
+    
+  }
+  
+  input {
+    padding: 10px;
+    height: 40px;
+    width: 80%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    
+  }
+  
+  button {
+    padding: 10px;
+    background-color:rgb(13, 138, 200, 1);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    width: 40%;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 18%;
+  }
+  
+  button:hover {
+    background-color: #005bb5;
+  }
+  
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>INSCRIVEZ-VOUS</h1>
+        <div class="content">
+          <img src="/recette/asset/L'Afrodisiac restaurant _ Cuisine africaine à Paris - Timodelle Magazine (1).jpg" alt="Chef tenant un plat" class="image">
+          <form>
+            
+            <input type="email" name="email" placeholder="e-mail" required>
+            <input type="password" name="password" placeholder="Mots de passe" required>
+        
+            <button type="submit">Soumettre</button>
+          </form>
+        </div>
+      </div>
+    
+</body>
+</html>

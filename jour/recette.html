@@ -3,40 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./recette.css">
+    <title>Menu Burger Responsive</title>
+    <style>
+        body{
+            margin: 0px;
+            padding: 0px;
+        }
+        main {
+            background-color: rgb(255, 255, 255);
+            height: 100%;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .container1 {
+            width: 25%;
+            background-color: rgb(255, 255, 255);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .cont {
+            background-color: rgb(13, 138, 200, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            height: 80%;
+            width: 80%;
+            border-radius: 3%;
+            margin-top: 6%;
+            margin-left: 21px;
+        }
+
+        .container1 button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .container2 {
+            width: 75%;
+            margin-top: 1%;
+        }
+
+        .cont0 {
+            display: flex;
+            justify-content: space-between;
+            height: 6%;
+            margin-left: 21px;
+        }
+
+        .cont2 {
+            margin-left: 21px;
+        }
+
+        .recherche {
+            height: 80%;
+            background-color: rgb(237, 237, 237);
+            border-radius: 10px;
+            margin: 10px auto;
+            border: none;
+        }
+
+        .button {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-right: 30px;
+            height: 40px;
+        }
+
+        .button button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #eaeaea;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button button:hover {
+            background-color: #0056b3;
+        }
+
+        h1 {
+            margin-left: 21px;
+            text-align: center;
+            color: rgb(13, 138, 200, 1);
+            font-size: 350%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .img {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .img img {
+            width: 40%;
+            height: 40%;
+        }
+
+        h2 {
+            margin-right: 21px;
+            color: rgb(13, 138, 200, 1);
+            font-size: 250%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        p {
+            margin-left: 21px;
+            color: rgb(13, 138, 200, 1);
+            font-size: 150%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .container1 {
+                display: none; 
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 60%;
+                height: 100%;
+                background-color: rgb(255, 255, 255);
+                box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+            .container1.show {
+                display: block; 
+            }
+
+            .burger-menu {
+                display: block;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                margin: 10px;
+            }
+            .burger-menu {
+            display: none; 
+        }
+            
+        }
+         
+        
+        /* @media (max-width: 768px) {
+    .cont0 {
+        flex-direction: column;   
+        align-items: stretch;     
+        gap: 15px;                
+    }
+
+    .button {
+        justify-content: center;  
+    }
+} */
+
+
+@media (max-width:640px) {
+    .cont0{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #000000;
+        height: 10%;
+        width:  120%;
+        
+    }
+    h1{
+        font-size: 40px;
+        margin-left: 85px;
+    }
+    h2{
+        font-size: 30px;
+        
+    }
+    .img {
+        display: block;
+        margin-left: 60px;
+        width: 100%;
+    }
+    .img img {
+        width: 90%; 
+        max-width: none; 
+        margin: 10px auto;
+    }
+    /* .img1 {
+       height: 300px;
+       background-color: #0056b3;
+       
+        width: 100%;
+    } */
+    .recherche {
+        font-size: 14px; 
+        width: 80%;       
+        padding: 2px;  
+        margin-right: 20px;         
+    }
+
+    .button button {
+        font-size: 10px;          
+        padding: 5px 5px;        
+    }
+}
+        
+    </style>
 </head>
 <body>
     <main>
         <div class="container">
-            <div class="container1">
+            <!-- Bouton Burger -->
+            <button class="burger-menu" id="burgerMenu">☰</button>
+
+            <!-- Menu latéral -->
+            <div class="container1" id="menuContent">
                 <div class="cont">
-                <button>Accueil</button>
-                   <button>Nouvelle recette</button>
-                   <button>Mes recettes</button>
+                    <button>Accueil</button>
+                    <button>Nouvelle recette</button>
+                    <button>Mes recettes</button>
                 </div>
             </div>
+
+            
             <div class="container2">
-             <div class="cont0">
-                <div class="cont2">
-                    <input type="text" placeholder="Rechercher..." class="recherche">
-                    <!-- <button class="search-button">🔍</button> -->
-                  </div>
-                  <div class="button">
-                    <button>Connexion</button>
-                    <button>Inscription</button>
-                 </div>
+                <div class="cont0">
+                    <div class="cont2">
+                        <input type="text" placeholder="Rechercher..." class="recherche">
+                    </div>
+                    <div class="button">
+                        <button>Connexion</button>
+                        <button>Inscription</button>
+                    </div>
                 </div>
                 <div>
                     <h1>Détail de la recette</h1>
                 </div>
                 <div>
-                    <div>
-                        <img src="/asset/343efa85960de6f4af3a690a931957e6 1.png" alt="Un chat mignon" width="300">
+                    <div class="img">
+                        <img src="/recette/asset/343efa85960de6f4af3a690a931957e6 1.png" alt="Un chat mignon" width="300" class="img1">
                         <h2>Poulet aux <br>oignons</h2>
                     </div>
-                    <div>
-                        <p>Temps de préparation: 30 min</p>
+                    <div class="text">
+                        <p>Ingredients</p>
                         <ul>
                             <li>1 kg de poulet</li>
                             <li>2 oignons</li>
@@ -48,22 +266,28 @@
                         </ul>
                     </div>
                     <div>
-                        <h3> Préparation</h3>
-                        <div>
-                            <ol>
-                                <li>Découpez les oignons et les éminces.</li>
-                                <li>Dans une poêle, faites bouillir le lait et le beurre.</li>
-                                <li>Ajoutez les oignons et la sauce tomate et mélangez.</li>
-                                <li>Ajoutez le curry et mélangez.</li>
-                                <li>Ajoutez le poulet et mélangez.</li>
-                                <li>Ajoutez le coulis de tomates et mélangez.</li>
-                            </ol>
-                        </div>
+                        <p>Préparation</p>
+                        <ol>
+                            <li>Découpez les oignons et les émincez.</li>
+                            <li>Dans une poêle, faites bouillir le lait et le beurre.</li>
+                            <li>Ajoutez les oignons et la sauce tomate et mélangez.</li>
+                            <li>Ajoutez le curry et mélangez.</li>
+                            <li>Ajoutez le poulet et mélangez.</li>
+                            <li>Ajoutez le coulis de tomates et mélangez.</li>
+                        </ol>
                     </div>
                 </div>
-  
             </div>
         </div>
     </main>
+    <script>
+        const burgerMenu = document.getElementById('burgerMenu');
+        const menuContent = document.getElementById('menuContent');
+
+        // Toggle afficher/masquer le menu
+        burgerMenu.addEventListener('click', () => {
+            menuContent.classList.toggle('show');
+        });
+    </script>
 </body>
 </html>

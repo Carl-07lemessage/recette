@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Style de base */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0073e6;
+  padding: 10px 20px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Style du menu burger */
+.burger-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.burger-menu span {
+  display: block;
+  height: 3px;
+  background-color: white;
+  border-radius: 3px;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+  .burger-menu {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #0073e6;
+    flex-direction: column;
+    width: 200px;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+  }
+
+  .nav-links.active {
+    height: 200px; /* Hauteur du menu déroulant */
+  }
+
+  .nav-links a {
+    padding: 10px;
+    text-align: center;
+  }
+}
+
+    </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="burger-menu" id="burgerMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Accueil</a></li>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    // Menu Burger Script
+document.addEventListener("DOMContentLoaded", () => {
+  const burgerMenu = document.getElementById("burgerMenu");
+  const navLinks = document.getElementById("navLinks");
+
+  // Toggle le menu burger
+  burgerMenu.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+});
+
+  </script>
+
+</body>
+</html>
